@@ -1,0 +1,32 @@
+app: app-e92f15ab6d484cac9b98
+source:
+  repo: https://github.com/gumtiket/todo-test-ai
+  commit: 2ff71b4566fc07e3202de034070ec6f952ec550c
+build:
+  dockerfile: Dockerfile
+  runtime_hint: python3.12
+port: 8080
+healthcheck: /healthz
+ingress: public
+env:
+- name: LOG_LEVEL
+  secret: false
+  generate: false
+  value: INFO
+- name: SECRET_KEY
+  secret: true
+  generate: true
+backing_services:
+- type: postgres
+  bind_as: DATABASE_URL
+workload:
+  type: request-driven
+  scale_to_zero: true
+  max_request_seconds: 10
+  websocket: false
+processes:
+  web:
+    instances: 1
+release:
+  migrate: python -m app.migrate
+profile: dev
