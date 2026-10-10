@@ -10,11 +10,9 @@ healthcheck: /healthz
 ingress: public
 env:
 - name: LOG_LEVEL
-  secret: false
   generate: false
   value: INFO
 - name: SECRET_KEY
-  secret: true
   generate: true
 backing_services:
 - type: postgres
