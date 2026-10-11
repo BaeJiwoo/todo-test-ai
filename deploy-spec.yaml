@@ -1,7 +1,7 @@
 app: app-eec35d9ba8d94f648be5
 source:
   repo: https://github.com/BaeJiwoo/todo-test-ai
-  commit: 653e937194eaf832f7f76b9eb63e82f5ce0113c7
+  commit: 585c2796b7d7b9c53335edaff66009d67c9b0d68
 build:
   dockerfile: Dockerfile
   runtime_hint: python3.12
